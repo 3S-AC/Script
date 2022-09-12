@@ -5,7 +5,7 @@
     "non_subscriptions" : {
       "filebox_pro" : [
         {
-          "id" : "chxm1023",
+          "id" : "cs",
           "is_sandbox" : false,
           "purchase_date" : "1983-03-15T00:00:00Z",
           "original_purchase_date" : "1983-03-15T00:00:00Z",
@@ -14,7 +14,7 @@
       ]
     },
     "first_seen" : "1983-03-15T00:00:00Z",
-    "original_application_version" : "162",
+    "original_application_version" : "170",
     "other_purchases" : {
       "filebox_pro" : {
         "purchase_date" : "1983-03-15T00:00:00Z"
@@ -29,11 +29,11 @@
         "grace_period_expires_date" : null,
         "purchase_date" : "1983-03-15T00:00:00Z",
         "product_identifier" : "filebox_pro",
-        "expires_date" : "2999-03-15T00:00:00Z"
+        "expires_date" : "null"
       }
     },
     "original_purchase_date" : "1983-03-15T00:00:00Z",
-    "original_app_user_id" : "$RCAnonymousID:88af1c116b274f27aaec084a31ebe80f",
+    "original_app_user_id" : "$RCAnonymousID%3A8e5a11e56b4246f2ab2b17058c01db1e",
     "last_seen" : "1983-03-15T00:00:00Z"
   }
 }

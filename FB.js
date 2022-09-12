@@ -1,4 +1,7 @@
-{
+var body = $response.body;
+var objk = JSON.parse(body);
+
+objk = {
   "request_date_ms" : 416505600000,
   "request_date" : "1983-03-15T00:00:00Z",
   "subscriber" : {
@@ -37,3 +40,8 @@
     "last_seen" : "1983-03-15T00:00:00Z"
   }
 }
+
+
+body = JSON.stringify(objk);
+
+$done({body});

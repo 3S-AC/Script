@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontents.com/chxm1023/script/main/JB/Picsew.js
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body https://raw.githubusercontent.com/gloryofchina/Script/main/Picsew.js
 
 [mitm] 
 

@@ -1,28 +1,70 @@
-/**
-*
-* @Title: unlock.js
-*
-* @Description: 客户端播放权限解锁
-*
-* @author: https://t.me/AppleArcade
-*
-* @version V1.0
-*
-* @Copyright: 2021 https://t.me/EmbyPublic All rights reserved.
-*
+/*
+
+************************
+QuantumultX :
+************************
+
+[rewrite_remote]
+https://raw.githubusercontent.com/qiangxinglin/Emby/main/QuantumultX/emby.conf, tag=Emby Premiere, update-interval=86400, opt-parser=false, enabled=true
+
 */
 
-var $util = util();
+var url = $request.url;
 
-if ($request.url.indexOf('mb3admin.com/admin/service/registration/validateDevice') != -1) {
-    if($util.status!=200){
-        $done({status: "HTTP/1.1 200 OK", headers: $response.headers, body: '{"cacheExpirationDays":999,"resultCode":"GOOD","message":"Device Valid"}' })
-    }else{
-        $done({})
-    }
-}else{
-    $done({})
+const myStatus = "HTTP/1.1 200 OK";
+const myHeaders = {
+    "Crack": "KS",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Method": "*",
+    "Access-Control-Allow-Credentials": "true"
+};
+
+
+if (url.indexOf('/admin/service/registration/validateDevice') != -1) {
+    obj = {
+        "cacheExpirationDays": 365,
+        "message": "Device Valid",
+        "resultCode": "GOOD"
+    };
+} else if (url.indexOf('/admin/service/appstore/register') != -1) {
+    obj = {
+        "featId": "",
+        "registered": true,
+        "expDate": "2099-01-01",
+        "key": ""
+    };
+} else if (url.indexOf('/admin/service/registration/validate') != -1) {
+    obj = {
+        "featId": "",
+        "registered": true,
+        "expDate": "2099-01-01",
+        "key": ""
+    };
+} else if (url.indexOf('/admin/service/registration/getStatus') != -1) {
+    obj = {
+        "planType": "Cracked",
+        "deviceStatus": "",
+        "subscriptions": []
+    };
+} else if (url.indexOf('/admin/service/supporter/retrievekey') != -1) {
+    obj = {
+        "Success": false,
+        "ErrorMessage": "Supporter not found"
+    };
 }
+
+myData = JSON.stringify(obj);
+
+const myResponse = {
+    status: myStatus,
+    headers: myHeaders, // Optional.
+    body: myData // Optional.
+};
+
+var $util = util();
+$util.notify('Emby Premiere 已激活');
+$util.done(myResponse);
 
 function util() {
     const isRequest = typeof $request != "undefined"
@@ -84,7 +126,6 @@ function util() {
         if (isQuanX) return $done(value)
         if (isSurge) isRequest ? $done(value) : $done()
     }
-    const status = isQuanX ? $response.statusCode : $response.status
     return {
         isRequest,
         notify,
@@ -92,7 +133,6 @@ function util() {
         read,
         get,
         post,
-        done,
-        status
+        done
     }
-}
+};
